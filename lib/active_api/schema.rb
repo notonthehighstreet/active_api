@@ -1,14 +1,15 @@
 module ActiveApi
 
   class Schema
-    class_inheritable_array :versions
+    class_attribute :versions
+    self.versions = []
 
     class << self
       def version(version, options = {})
         options[:definition_class] ||= Definition
         schema = Schema.new version, options
         yield schema
-        write_inheritable_array :versions, [schema]
+        self.versions += [schema]
         schema
       end
 

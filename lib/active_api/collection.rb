@@ -1,3 +1,5 @@
+require "active_support/inflections"
+
 module ActiveApi
   class Collection
     include Builder
